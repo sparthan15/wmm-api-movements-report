@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NewMovementValidation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wmm-api-movements-application</a> &gt; <a href="index.source.html" class="el_package">com.wmm.application.businessrules</a> &gt; <span class="el_source">NewMovementValidation.java</span></div><h1>NewMovementValidation.java</h1><pre class="source lang-java linenums">package com.wmm.application.businessrules;
+
+import com.wmm.domain.IncompleteRequestDataException;
+import com.wmm.domain.entity.Movement;
+import lombok.RequiredArgsConstructor;
+
+import static com.wmm.application.exceptions.ExceptionMessages.*;
+
+<span class="fc" id="L9">@RequiredArgsConstructor</span>
+public class NewMovementValidation {
+
+    private final Movement movement;
+
+    public void check() {
+<span class="fc bfc" id="L15" title="All 2 branches covered.">        if (movement.getDate() == null) {</span>
+<span class="fc" id="L16">            throw new IncompleteRequestDataException(REQUEST_DATE_WRONG);</span>
+        }
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (movement.getAmount() &lt; 1) {</span>
+<span class="fc" id="L19">            throw new IncompleteRequestDataException(REQUEST_AMOUNT_ZERO);</span>
+        }
+
+<span class="pc bpc" id="L22" title="2 of 6 branches missed.">        if (movement.getUserId()==null || movement.getUserId().isBlank() || movement.getUserId().isEmpty()) {</span>
+<span class="fc" id="L23">            throw new IncompleteRequestDataException(REQUEST_AMOUNT_ZERO);</span>
+        }
+
+<span class="pc bpc" id="L26" title="2 of 6 branches missed.">        if (movement.getDetail()==null || movement.getDetail().isBlank() || movement.getDetail().isEmpty()) {</span>
+<span class="fc" id="L27">            throw new IncompleteRequestDataException(REQUEST_DETAIL_EMPTY);</span>
+        }
+
+<span class="pc bpc" id="L30" title="1 of 4 branches missed.">        if (movement.getMovementType()==null ||movement.getMovementType().equals(&quot;&quot;) ) {</span>
+<span class="fc" id="L31">            throw new IncompleteRequestDataException(REQUEST_MOVEMENT_TYPE_EMPTY);</span>
+        }
+
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (movement.getCreatedAt()==null) {</span>
+<span class="fc" id="L35">            throw new IncompleteRequestDataException(CREATED_AT_NOT_SETTLED);</span>
+        }
+
+
+<span class="fc" id="L39">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

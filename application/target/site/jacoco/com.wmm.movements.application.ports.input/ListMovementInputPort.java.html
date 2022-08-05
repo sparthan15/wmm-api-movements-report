@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ListMovementInputPort.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wmm-api-movements-application</a> &gt; <a href="index.source.html" class="el_package">com.wmm.movements.application.ports.input</a> &gt; <span class="el_source">ListMovementInputPort.java</span></div><h1>ListMovementInputPort.java</h1><pre class="source lang-java linenums">package com.wmm.movements.application.ports.input;
+
+import com.wmm.movements.application.usecases.ListMovementUseCase;
+import com.wmm.movements.application.ports.output.GetMovementOutputPort;
+import com.wmm.movements.domain.entity.Movement;
+import com.wmm.movements.domain.vo.MovementType;
+import lombok.RequiredArgsConstructor;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+<span class="fc" id="L12">@RequiredArgsConstructor</span>
+public class ListMovementInputPort implements ListMovementUseCase {
+
+    private final GetMovementOutputPort getMovementOutputPort;
+
+    @Override
+    public List&lt;Movement&gt; findByUserId(String userId) {
+<span class="fc" id="L19">        return getMovementOutputPort.findByUserId(userId);</span>
+    }
+
+    @Override
+    public List&lt;Movement&gt; findByMovementType(String userId, MovementType movementType) {
+<span class="fc" id="L24">        return getMovementOutputPort.findByMovementType(userId, movementType);</span>
+    }
+
+    @Override
+    public List&lt;Movement&gt; findByDate(LocalDateTime dateTime) {
+<span class="fc" id="L29">        return null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

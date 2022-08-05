@@ -1,0 +1,9 @@
+com\wmm\movements\application\usecases\input\util\AddMovementTestDataUtil.class
+com\wmm\movements\application\usecases\input\ListMovementByUserUseCaseTest.class
+com\wmm\movements\application\usecases\input\buisinessrules\NewMovementValidationTest.class
+com\wmm\movements\application\usecases\input\DeleteMovementUseCaseTest.class
+com\wmm\movements\application\usecases\input\util\TestObjectCreator.class
+com\wmm\movements\application\usecases\input\EditMovementUseCaseTest.class
+com\wmm\movements\application\usecases\input\CudMovementUseCaseTest.class
+com\wmm\movements\application\usecases\input\CreateTagUseCaseTest.class
+com\wmm\movements\application\usecases\input\ListMovementTypeTest.class

@@ -1,0 +1,16 @@
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\usecases\ListMovementUseCase.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\ports\input\DeleteMovementInputAdapter.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\ports\input\ListMovementTypeUseCaseInputPort.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\ports\input\ListMovementInputPort.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\usecases\CudMovementUseCase.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\usecases\ListMovementTypeUseCase.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\ports\output\GetMovementOutputPort.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\exceptions\UserCanNotCarryOutThisOperation.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\ports\input\CudMovementInputPort.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\exceptions\ExceptionMessages.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\ports\output\MovementCudOutputPort.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\ports\output\TagOutputPort.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\businessrules\NewMovementValidation.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\ports\input\SaveTagInputPort.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\usecases\SaveTagUseCase.java
+D:\Mi empresa\where-is-my-money\wmm-back\wmm-api-movements\application\src\main\java\com\wmm\movements\application\usecases\DeleteMovementUseCase.java

@@ -1,0 +1,16 @@
+com\wmm\movements\application\usecases\ListMovementUseCase.class
+com\wmm\movements\application\usecases\DeleteMovementUseCase.class
+com\wmm\movements\application\ports\input\CudMovementInputPort.class
+com\wmm\movements\application\ports\input\SaveTagInputPort.class
+com\wmm\movements\application\exceptions\ExceptionMessages.class
+com\wmm\movements\application\ports\input\ListMovementInputPort.class
+com\wmm\movements\application\ports\output\MovementCudOutputPort.class
+com\wmm\movements\application\usecases\CudMovementUseCase.class
+com\wmm\movements\application\ports\input\ListMovementTypeUseCaseInputPort.class
+com\wmm\movements\application\usecases\SaveTagUseCase.class
+com\wmm\movements\application\businessrules\NewMovementValidation.class
+com\wmm\movements\application\exceptions\UserCanNotCarryOutThisOperation.class
+com\wmm\movements\application\ports\input\DeleteMovementInputAdapter.class
+com\wmm\movements\application\ports\output\GetMovementOutputPort.class
+com\wmm\movements\application\ports\output\TagOutputPort.class
+com\wmm\movements\application\usecases\ListMovementTypeUseCase.class
