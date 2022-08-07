@@ -2,6 +2,7 @@ package com.wmm.movements.report.infrastructure.adapters.input.rest.model.reques
 
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -9,8 +10,9 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @ToString
-public class Tag {
+public class Movements {
     private List<String> tags;
     private String amount;
+    private LocalDateTime date;
 
 }

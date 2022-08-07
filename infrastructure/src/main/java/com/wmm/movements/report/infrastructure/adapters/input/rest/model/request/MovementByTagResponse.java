@@ -13,12 +13,12 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class MovementByTagResponse {
 
-    private List<Tag> tags;
+    private List<Movements> movements;
 
     public MovementByTagResponse(Map<String, Double> tagsMap) {
-        tags = tagsMap.keySet()
+        movements = tagsMap.keySet()
                 .stream()
-                .map(k -> Tag.builder()
+                .map(k -> Movements.builder()
                         .tags(List.of(k))
                         .amount(tagsMap.get(k).toString())
                         .build())

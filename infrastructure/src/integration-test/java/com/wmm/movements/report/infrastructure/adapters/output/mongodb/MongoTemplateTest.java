@@ -1,14 +1,23 @@
 package com.wmm.movements.report.infrastructure.adapters.output.mongodb;
 
 import com.wmm.movements.report.infrastructure.MovementReportApplication;
-import com.wmm.movements.report.infrastructure.adapters.input.rest.model.request.Tag;
+import com.wmm.movements.report.infrastructure.adapters.input.rest.model.request.MovementByTag;
+import com.wmm.movements.report.infrastructure.adapters.input.rest.model.request.Movements;
 import com.wmm.movements.report.infrastructure.adapters.output.mongodb.entity.MovementEntity;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
+
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
 
@@ -38,9 +47,40 @@ public class MongoTemplateTest {
 
         Aggregation aggregation = Aggregation.newAggregation(matchOperation, projectionOperation,
                 groupOperation);
-        AggregationResults<Tag> output = mongoTemplate.aggregate(aggregation,
+        AggregationResults<Movements> output = mongoTemplate.aggregate(aggregation,
                 "movements",
-                Tag.class);
+                Movements.class);
         System.out.println(output.getMappedResults());
+    }
+
+    @Test
+    public void groupTagsAmountByUserIdWithDateBetween() {
+        AggregationResults<Movements> output = getMovementsByDateByUserId();
+        Map<String, Set<String>> tags = output.getMappedResults().stream()
+                .map(m -> m.getTags()
+                        .stream()
+                        .map(t -> MovementByTag.builder().tag(t)
+                                .amount(m.getAmount())
+                                .build())
+                        .collect(Collectors.toList()))
+                .flatMap(Collection::stream)
+                .collect(Collectors.groupingBy(MovementByTag::getTag, TreeMap::new,
+                        Collectors.mapping(MovementByTag::getAmount, Collectors.toSet())));
+        System.out.println(tags);
+
+    }
+
+    @NotNull
+    private AggregationResults<Movements> getMovementsByDateByUserId() {
+        MatchOperation matchOperation = Aggregation.match(new Criteria("userId").is("1").and(
+                        "date").gt(LocalDateTime.of(2022, 8, 5, 0, 0, 0))
+                .lt(LocalDateTime.of(2022, 8, 5, 23, 59, 59)));
+        ProjectionOperation projectionOperation = Aggregation.project("tags", "amount", "date");
+
+        Aggregation aggregation = Aggregation.newAggregation(matchOperation, projectionOperation);
+        AggregationResults<Movements> output = mongoTemplate.aggregate(aggregation,
+                "movements",
+                Movements.class);
+        return output;
     }
 }
