@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("movement-report")
+@RequestMapping("movements-report")
 public class MovementAmountByUserInputAdapter {
 
     private final GetMovementsAmountByUserGroupByTagUseCase getMovementsAmountByUserGroupByTagUseCase;

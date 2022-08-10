@@ -14,4 +14,10 @@ public class TagReportFilter {
     private final String userId;
     private final LocalDateTime initDate;
     private final LocalDateTime finalDate;
+
+    public TagReportFilter() {
+        userId = null;
+        initDate = null;
+        finalDate = null;
+    }
 }

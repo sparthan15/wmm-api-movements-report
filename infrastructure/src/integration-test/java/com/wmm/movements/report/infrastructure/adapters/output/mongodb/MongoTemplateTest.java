@@ -13,10 +13,7 @@ import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
@@ -54,20 +51,44 @@ public class MongoTemplateTest {
     }
 
     @Test
-    public void groupTagsAmountByUserIdWithDateBetween() {
+    public void groupTagsMovementdByUserIdWithDateBetween() {
         AggregationResults<Movements> output = getMovementsByDateByUserId();
-        Map<String, Set<String>> tags = output.getMappedResults().stream()
+        Map<String, Set<Double>> tags = output.getMappedResults().stream()
                 .map(m -> m.getTags()
                         .stream()
                         .map(t -> MovementByTag.builder().tag(t)
-                                .amount(m.getAmount())
+                                .amount(Double.valueOf(m.getAmount()))
                                 .build())
                         .collect(Collectors.toList()))
                 .flatMap(Collection::stream)
                 .collect(Collectors.groupingBy(MovementByTag::getTag, TreeMap::new,
                         Collectors.mapping(MovementByTag::getAmount, Collectors.toSet())));
         System.out.println(tags);
+    }
 
+
+    @Test
+    public void groupTagsAmountByUserIdWithDateBetween() {
+        AggregationResults<Movements> output = getMovementsByDateByUserId();
+        Map<String, List<Double>> tags = output.getMappedResults().stream()
+                .map(m -> m.getTags()
+                        .stream()
+                        .map(t -> MovementByTag.builder().tag(t)
+                                .amount(Double.valueOf(m.getAmount()))
+                                .build())
+                        .collect(Collectors.toList()))
+                .flatMap(Collection::stream)
+                .collect(Collectors.groupingBy(MovementByTag::getTag,
+                        TreeMap::new,
+                        Collectors.mapping(MovementByTag::getAmount, Collectors.toList())));
+        Map<String, Double> amountByTag = new HashMap<>();
+        tags.keySet().stream()
+                .forEach(k -> {
+                    amountByTag.put(k, tags.get(k).stream()
+                            .reduce(Double.valueOf(0), Double::sum));
+                });
+
+        System.out.println(amountByTag);
     }
 
     @NotNull

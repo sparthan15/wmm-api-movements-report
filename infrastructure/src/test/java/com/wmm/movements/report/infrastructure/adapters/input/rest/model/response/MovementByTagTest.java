@@ -8,7 +8,7 @@ public class MovementByTagTest {
 
     @Test
     public void test() {
-        MovementByTag movementByTag = MovementByTag.builder().tag("rappi").amount("100").build();
+        MovementByTag movementByTag = MovementByTag.builder().tag("rappi").amount(100.5).build();
         Assertions.assertThat(movementByTag.getTag()).isNotNull();
         Assertions.assertThat(movementByTag.getAmount()).isNotNull();
     }

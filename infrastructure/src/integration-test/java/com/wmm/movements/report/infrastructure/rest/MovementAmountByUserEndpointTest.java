@@ -21,16 +21,19 @@ public class MovementAmountByUserEndpointTest extends MongoDbTestBase {
     private MockMvc mockMvc;
     private ObjectMapper objectMapper = new ObjectMapper();
     private String apiUri = "/movements-report";
-    private String userIdTest = "123L";
+    private String userIdTest = "1";
 
 
     @Test
     void getMovementAmountByUserGroupByTagEndpointTest() throws Exception {
         mockMvc.perform(post(apiUri)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"initDate\":22.0,\"initDate\":\"2022-07-09T15:40:12.743Z\"," +
-                                "finalDate\":\"2022-07-09T15:40:12.743Z\"," +
-                                "userId\":\"" + userIdTest + "\"}"))
+                        .content("{\n" +
+                                "    \"initDate\":\"2022-08-05T15:40:12\",\n" +
+                                "    \"finalDate\":\"2022-08-09T15:40:12\",\n" +
+                                "    \"userId\":\"1\"\n" +
+                                "}")
+                )
                 .andExpect(status().isOk());
     }
 

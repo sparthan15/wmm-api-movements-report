@@ -1,7 +1,7 @@
 package com.wmm.movements.report.infrastructure.adapters.input.rest.model;
 
+import com.wmm.movements.report.infrastructure.adapters.input.rest.model.request.MovementByTag;
 import com.wmm.movements.report.infrastructure.adapters.input.rest.model.request.MovementByTagResponse;
-import com.wmm.movements.report.infrastructure.adapters.input.rest.model.request.Movements;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,9 +14,9 @@ public class MovementByTagResponseTest {
     @Test
     public void test() {
         MovementByTagResponse movementByTagResponse = MovementByTagResponse.builder()
-                .movements(List.of(Movements.builder()
-                        .tags(List.of("rappi"))
-                        .amount("10.2")
+                .movements(List.of(MovementByTag.builder()
+                        .tag("rappi")
+                        .amount(10.2)
                         .build()))
                 .build();
         Assertions.assertNotNull(movementByTagResponse.getMovements());

@@ -10,6 +10,6 @@ import lombok.*;
 public class MovementByTag {
 
     private String tag;
-    private String amount;
+    private Double amount;
 
 }

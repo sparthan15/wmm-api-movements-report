@@ -13,5 +13,4 @@ public class UseCaseConfiguration {
     public GetMovementsAmountByUserGroupByTagUseCase getMovementsAmountByUserGroupByTagUseCase(MovementOutputPort movementOutputPort) {
         return new GetMovementsAmountByTagInputPort(movementOutputPort);
     }
-
 }

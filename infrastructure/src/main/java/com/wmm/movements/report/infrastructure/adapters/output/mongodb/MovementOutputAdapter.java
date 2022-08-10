@@ -2,22 +2,25 @@ package com.wmm.movements.report.infrastructure.adapters.output.mongodb;
 
 import com.wmm.movements.report.application.TagReportFilter;
 import com.wmm.movements.report.application.ports.output.MovementOutputPort;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import com.wmm.movements.report.infrastructure.adapters.output.mongodb.repository.MovementRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class MovementOutputAdapter implements MovementOutputPort {
 
-    @Autowired
-    private MongoTemplate mongoTemplate;
+
+    private final MovementRepository movementRepository;
 
     @Override
     public Map<String, Double> getMovementsAmountByUserGroupByTag(TagReportFilter tagReportFilter) {
+        return
+                movementRepository.getMovementsAmountByTagByDateByUserId(tagReportFilter);
 
-        return new HashMap<>();
     }
+
+
 }
