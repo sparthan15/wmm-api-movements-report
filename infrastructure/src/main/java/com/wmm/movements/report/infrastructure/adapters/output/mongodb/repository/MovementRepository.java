@@ -28,7 +28,7 @@ public class MovementRepository {
         MatchOperation matchOperation =
                 Aggregation.match(new Criteria("userId").is(tagReportFilter.getUserId()).and(
                                 "date").gt(tagReportFilter.getInitDate())
-                        .lt(tagReportFilter.getFinalDate()));
+                        .lt(tagReportFilter.getFinalDate()).and("movementType").is(tagReportFilter.getMovementType()));
         ProjectionOperation projectionOperation = Aggregation.project("tags", "amount", "date");
 
         Aggregation aggregation = Aggregation.newAggregation(matchOperation, projectionOperation);
@@ -37,7 +37,8 @@ public class MovementRepository {
                 Movements.class);
 
         return output.getMappedResults().stream()
-                .map(t -> MovementByTag.builder().tag(t.getTags().get(0))
+                .map(t -> MovementByTag.builder().tag(t.getTags().isEmpty() ? "Sin etiqueta" :
+                                t.getTags().get(0))
                         .amount(Double.valueOf(t.getAmount()))
                         .build())
                 .collect(Collectors.groupingBy(MovementByTag::getTag, TreeMap::new,
